@@ -39,7 +39,7 @@ body, html {
 }
 @media (max-width: 768px) {
   .hero-section {
-    background-image: url('/images/mobile/bg.png');
+    background-image: url('/Wonderland/images/mobile/bg.png');
     height: 60%;
   width: 100%;
   object-fit:cover ;
