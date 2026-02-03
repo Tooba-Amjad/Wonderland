@@ -50,11 +50,12 @@
         /* Premium Gallery Header */
         .gallery-hero {
             padding: 180px 0 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/background.png');
+            /* Lighter, softer overlay for a cleaner look */
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('images/background.png');
             background-size: cover;
             background-position: center;
             text-align: center;
-            color: white;
+            color: var(--dark-color);
         }
 
         .gallery-hero h1 {
@@ -64,7 +65,7 @@
             letter-spacing: -2px;
             line-height: 0.9;
             margin-bottom: 20px;
-            color: white;
+            color: var(--dark-color);
         }
 
         .gallery-hero h1 span {
