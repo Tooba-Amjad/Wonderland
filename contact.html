@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Wonderland Pop Art Salon</title>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --primary-color: #ff007a;
+            --secondary-color: #f1e108;
+            --dark-color: #000;
+            --light-color: #fdfdfd;
+        }
+
+        body {
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .contact-hero {
+            padding: 180px 0 80px;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/bg.png');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-form-box {
+            border: 4px solid var(--dark-color);
+            padding: 40px;
+            background: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-form-box:hover {
+            box-shadow: 15px 15px 0 var(--primary-color);
+            transform: translate(-5px, -5px);
+        }
+
+        .form-control {
+            border: 2px solid var(--dark-color);
+            border-radius: 0;
+            padding: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        .submit-btn {
+            background: var(--dark-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 15px 40px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 8px 8px 0 var(--secondary-color);
+            transform: translate(-3px, -3px);
+        }
+
+        .info-box {
+            background: var(--secondary-color);
+            border: 4px solid var(--dark-color);
+            padding: 30px;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+
+        .info-box h4 {
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .map-container {
+            border: 4px solid var(--dark-color);
+            height: 400px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box-decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border: 4px solid var(--dark-color);
+            top: -30px;
+            right: -30px;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 3rem;
+            }
+
+            .contact-form-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🔸 Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Pop Art Salon Logo" height="50" id="logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4">
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="about.html">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="subservice.html">Hair Care & Styling</a></li>
+                            <li><a class="dropdown-item" href="makeup.html">Makeup</a></li>
+                            <li><a class="dropdown-item" href="#">Massage & Body</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="test.html">All Services</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold active"
+                            href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🔸 Hero Section -->
+    <header class="contact-hero">
+        <div class="container">
+            <h1 data-aos="fade-down">Get In <span>Touch</span></h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">Ready for your transformation? Book a session or ask
+                us anything.</p>
+        </div>
+    </header>
+
+    <!-- 🔸 Contact Form Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <!-- Form -->
+                <div class="col-lg-7 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="contact-form-box">
+                        <div class="box-decoration"></div>
+                        <h2 class="fw-900 text-uppercase mb-4">Send a Message</h2>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="YOUR NAME" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="YOUR EMAIL" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="SUBJECT">
+                            <textarea class="form-control" rows="5" placeholder="YOUR MESSAGE" required></textarea>
+                            <button type="submit" class="submit-btn" id="liveToastBtn">Send Masterpiece</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="row h-100">
+                        <div class="col-12 mb-4">
+                            <div class="info-box">
+                                <h4>📍 VISIT US</h4>
+                                <p class="mb-0 fw-bold">560 Mission St, San Francisco</p>
+                                <p>California, 94105 USA</p>
+                                <hr class="border-2 border-dark">
+                                <h4>📞 CALL US</h4>
+                                <p class="mb-0 fw-bold">+1 (415) 555-0123</p>
+                                <p>Mon - Sun: 10:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="info-box" style="background: var(--primary-color); color: white;">
+                                <h4>✨ SOCIAL GLUE</h4>
+                                <div class="d-flex gap-3 fs-4">
+                                    <a href="#" class="text-white">Instagram</a>
+                                    <a href="#" class="text-white">TikTok</a>
+                                    <a href="#" class="text-white">Facebook</a>
+                                </div>
+                                <p class="mt-3">Tag us in your looks! <br> #WonderlandSalon #PopArtBeauty</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container" data-aos="zoom-in">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.01911248127!2d-122.3999641!3d37.7885994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580629a98ef1f%3A0x7d9f7ac0d5718a99!2s560%20Mission%20St%2C%20San%20Francisco%2C%20CA%2094105!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="images/logo.png" alt="POP-ART Logo" class="footer-logo" />
+        <p>560 Mission St, San Francisco<br>CA 94 USA</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="test.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="#">Testimonial</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <small>Copyright ©POP-ART 2020. All rights reserved</small>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Your message has been sent to Wonderland! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
