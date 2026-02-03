@@ -13,11 +13,11 @@ html {
   /* Use your uploaded image */
   background-size: cover;
   background-position: center;
-
+  background-attachment: fixed;
+  /* Parallax Effect */
   height: 100vh;
   width: auto;
   position: relative;
-
 }
 
 
