@@ -34,7 +34,7 @@
 
         .about-hero {
             padding: 180px 0 100px;
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/about.png');
+            background: url('images/about.png');
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -127,6 +127,26 @@
             margin: 0 auto 20px;
             background: var(--secondary-color);
             font-weight: 900;
+            transition: all 0.3s ease;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .stat-circle:hover {
+            transform: scale(1.1) rotate(5deg) !important;
+            box-shadow: 10px 10px 0 var(--dark-color);
+            cursor: pointer;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -252,25 +272,25 @@
     <section class="py-5 bg-light border-top border-bottom border-4 border-dark">
         <div class="container py-4">
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-3" data-aos="zoom-in">
                     <div class="stat-circle">
                         <span class="fs-2">10+</span>
                     </div>
                     <h5 class="fw-bold">YEARS OF BOLDNESS</h5>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="stat-circle" style="background: var(--primary-color); color: white;">
                         <span class="fs-2">50k</span>
                     </div>
                     <h5 class="fw-bold">HAPPY CANVAS</h5>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
                     <div class="stat-circle">
                         <span class="fs-2">15+</span>
                     </div>
                     <h5 class="fw-bold">AWARDED LOOKS</h5>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="stat-circle" style="background: var(--primary-color); color: white;">
                         <span class="fs-2">100%</span>
                     </div>
