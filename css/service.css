@@ -9,7 +9,7 @@ html {
 
 /* Hero Section with Background Image */
 .hero-section {
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('../images/service.png');
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('../images/service.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
