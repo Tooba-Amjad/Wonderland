@@ -1,28 +1,29 @@
-
 /* Reset */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
-   font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial;
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial;
 }
 
 /* Hero Section with Background Image */
 .hero-section {
-  background-image: url('../images/service.png'); /* Use your uploaded image */
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('../images/service.png');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 
-   height: 120%;
+  height: 100vh;
   width: auto;
   position: relative;
-  
+
 }
 
 
 /* Navbar styling */
 .navbar-brand {
- 
+
   letter-spacing: 2px;
 }
 
@@ -34,16 +35,17 @@ body, html {
   color: #ff007a !important;
 }
 
-    .services-page {
-      display: flex;
-      padding: 50px;
-      padding-bottom: 0;
-      gap: 30px;
-    }
-    .main-content {
-      flex: 1;
-    }
-    
+.services-page {
+  display: flex;
+  padding: 50px;
+  padding-bottom: 0;
+  gap: 30px;
+}
+
+.main-content {
+  flex: 1;
+}
+
 .gallery-header {
   max-width: 900px;
   margin: 0 auto;
@@ -63,16 +65,16 @@ body, html {
   line-height: 1.6;
 }
 
-    .main-content h2 {
-      color: #ff4b5c;
-      font-weight: 700;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+.main-content h2 {
+  color: #ff4b5c;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    
-  .popart-collection h2{
+
+.popart-collection h2 {
   font-weight: 900;
 
 }
@@ -84,17 +86,18 @@ body, html {
     height: auto;
     padding: 4rem 1rem;
   }
-.popart-collection{
-  padding: 0px !important;
-}
- 
 
-  
+  .popart-collection {
+    padding: 0px !important;
+  }
+
+
+
 
 
   .section-title {
     font-size: 2rem;
-   color: rgba(0, 0, 0, 0.737) !important;
+    color: rgba(0, 0, 0, 0.737) !important;
 
     text-align: center;
   }
@@ -117,11 +120,12 @@ body, html {
   height: 360px;
   object-fit: cover;
 }
+
 .side-img {
-  
+
   width: 100%;
   height: auto;
-  
+
   object-fit: cover;
 }
 
@@ -182,13 +186,15 @@ body, html {
 
 /* Mobile: reset so they don't overlap */
 @media (max-width: 768px) {
-  .services-page{
+  .services-page {
     padding: 2px;
   }
+
   .side-img1,
   .side-img:last-child {
     transform: translateY(0);
   }
+
   .overlay {
     /* Make overlay visible on mobile at the bottom */
     top: auto;
@@ -197,24 +203,33 @@ body, html {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
     justify-content: flex-end;
     padding: 15px;
-    transition: none; /* Disable hover transition on mobile */
+    transition: none;
+    /* Disable hover transition on mobile */
   }
+
   .overlay h3 {
-    font-size: 1rem; /* Smaller title for mobile */
+    font-size: 1rem;
+    /* Smaller title for mobile */
   }
+
   .overlay p {
-    display: none; /* Hide paragraph on mobile to save space */
+    display: none;
+    /* Hide paragraph on mobile to save space */
   }
-  .gallery-title{
+
+  .gallery-title {
     font-size: 2.5rem;
   }
-  .hero-section{
+
+  .hero-section {
     background-image: url('/Wonderland/images/bg2.png');
     background-size: cover;
     background-position: center;
-    height: 60vh; /* Adjust height for mobile view */
+    height: 60vh;
+    /* Adjust height for mobile view */
   }
 }
+
 .service-card {
   position: relative;
   width: 100%;
@@ -227,10 +242,11 @@ body, html {
   object-fit: cover;
   display: block;
 }
+
 .deals-section {
   padding: 0px 0 !important;
   background: white;
-  
+
   color: black;
   text-align: center;
 }
@@ -248,31 +264,34 @@ body, html {
 .deal-wrapper {
   display: flex;
   gap: 25px;
- 
+
   justify-content: center;
   flex-wrap: wrap;
 }
 
 /* Luxury coupon card */
 .deal-card {
-    width: 330px;;
- height: max-content;
-background-color: white;
+  width: 330px;
+  ;
+  height: max-content;
+  background-color: white;
   padding: 25px 25px 40px;
-  
-  border: 2px black  solid;
+
+  border: 2px black solid;
   position: relative;
- 
+
   cursor: pointer;
   transition: transform .4s ease;
 }
-.card2{
-    background-color: white !important;
+
+.card2 {
+  background-color: white !important;
 }
-.text-service{
-    padding: 30px 30px 0px;
-    margin: 30px 30px 0px;
-    color: rgba(0, 0, 0, 0.683);
+
+.text-service {
+  padding: 30px 30px 0px;
+  margin: 30px 30px 0px;
+  color: rgba(0, 0, 0, 0.683);
 }
 
 /* Tear notch circles */
@@ -281,11 +300,15 @@ background-color: white;
   position: absolute;
   width: 22px;
   height: 22px;
-background-color: #53d0c4;
+  background-color: #53d0c4;
   border-radius: 50%;
 }
 
-.deal-card:before { top: 0; left: 50%; transform: translateX(-50%) translateY(-50%); }
+.deal-card:before {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
 
 
 .deal-card h3 {
@@ -317,16 +340,17 @@ background-color: #53d0c4;
 }
 
 
- 
-.stats-section{
+
+.stats-section {
   padding: 60px 0px;
 }
-.stats-section h2{
- font-weight: 900;
+
+.stats-section h2 {
+  font-weight: 900;
 }
 
 
-    footer {
+footer {
   background: #f1e108;
   color: black;
   text-align: center;
@@ -334,7 +358,8 @@ background-color: #53d0c4;
 }
 
 .footer-logo {
-  width: 220px;      /* Adjust as needed */
+  width: 220px;
+  /* Adjust as needed */
   height: auto;
   margin-bottom: 15px;
 }
@@ -392,7 +417,7 @@ footer small {
   right: 10%;
   bottom: 10%;
   background: #fdfdfd;
-  
+
   z-index: 2;
   border-radius: 5px;
 }
@@ -421,19 +446,21 @@ footer small {
   font-size: 4rem;
   font-weight: 900;
 }
-.vip-services-list li{
+
+.vip-services-list li {
   font-weight: 600;
 }
+
 .section-title {
   font-weight: 800;
   background-color: #fdfdfd;
   font-size: 2.7rem;
-  color:  rgba(255, 0, 90, 0.85);
+  color: rgba(255, 0, 90, 0.85);
   letter-spacing: -0.5px;
 }
 
 .section-desc {
-  
+
   font-size: 1.1rem;
   color: #444;
   max-width: 520px;
@@ -447,10 +474,10 @@ footer small {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 2px solid  #53d0c4;
+  border-bottom: 2px solid #53d0c4;
   padding-bottom: 4px;
   transition: all 0.3s ease;
-  color:  #53d0c4;
+  color: #53d0c4;
   cursor: pointer;
 }
 
@@ -458,7 +485,8 @@ footer small {
   color: #ff007a;
   border-color: #ff007a;
 }
-.popart-collection h2{
+
+.popart-collection h2 {
   font-weight: 900;
 
 }
@@ -469,9 +497,11 @@ footer small {
     height: auto;
     padding: 4rem 1rem;
   }
-.popart-collection{
-  padding: 0px !important;
-}
+
+  .popart-collection {
+    padding: 0px !important;
+  }
+
   .white-layer {
     top: 5%;
     left: 5%;

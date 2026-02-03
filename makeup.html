@@ -82,7 +82,14 @@
 
     /* Override hero image for this page */
     .hero-section {
-      background-image: url('/Wonderland/images/bg2.png');
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('images/bg2.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       line-height: 1.45;
