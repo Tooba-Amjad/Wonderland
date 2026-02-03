@@ -37,12 +37,47 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('images/abouts.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            /* Parallax Effect */
+            /* Geometric Pattern Background */
+            background: linear-gradient(135deg, #ff007a 0%, #53d0c4 50%, #f1e108 100%);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Geometric Shapes */
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle, rgba(0, 0, 0, 0.1) 2px, transparent 2px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.15) 3px, transparent 3px);
+            background-size: 50px 50px, 80px 80px;
+            background-position: 0 0, 25px 25px;
+            animation: movePattern 20s linear infinite;
+        }
+
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.05) 10px, rgba(255, 255, 255, 0.05) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.03) 10px, rgba(0, 0, 0, 0.03) 20px);
+        }
+
+        @keyframes movePattern {
+            0% {
+                background-position: 0 0, 25px 25px;
+            }
+
+            100% {
+                background-position: 50px 50px, 75px 75px;
+            }
         }
 
         .about-hero h1 {
@@ -52,10 +87,17 @@
             letter-spacing: -2px;
             line-height: 0.9;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
         }
 
         .about-hero h1 span {
-            color: var(--primary-color);
+            color: var(--dark-color);
+            background: white;
+            padding: 5px 15px;
+            display: inline-block;
         }
 
         .mission-section {
