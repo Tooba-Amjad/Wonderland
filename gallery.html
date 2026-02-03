@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Gallery | Wonderland Pop Art Salon</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --primary-color: #ff007a;
+            --secondary-color: #f1e108;
+            --dark-color: #000;
+            --light-color: #fdfdfd;
+        }
+
+        body {
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        /* Transparent Navbar initially, then solid on scroll */
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Premium Gallery Header */
+        .gallery-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('images/background.png');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .gallery-hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .gallery-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        /* Masonry Grid */
+        .masonry-container {
+            columns: 3 300px;
+            column-gap: 20px;
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto 100px;
+        }
+
+        .masonry-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            cursor: pointer;
+            border: 3px solid var(--dark-color);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .masonry-item:hover {
+            box-shadow: 10px 10px 0px var(--primary-color);
+            transform: translate(-5px, -5px);
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 0, 122, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .masonry-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay span {
+            color: white;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .masonry-item:hover .overlay span {
+            transform: translateY(0);
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 30px;
+            border: 2px solid var(--dark-color);
+            background: transparent;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--dark-color);
+            color: var(--secondary-color);
+        }
+
+        /* Lightbox Mockup */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+        }
+
+        #lightbox .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 3rem;
+            }
+
+            .masonry-container {
+                columns: 1 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🔸 Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Pop Art Salon Logo" height="50" id="logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4">
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="about.html">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="subservice.html">Hair Care & Styling</a></li>
+                            <li><a class="dropdown-item" href="makeup.html">Makeup</a></li>
+                            <li><a class="dropdown-item" href="#">Massage & Body</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="test.html">All Services</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold active"
+                            href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🔸 Hero Section -->
+    <header class="gallery-hero">
+        <div class="container">
+            <h1 data-aos="fade-down">Signature <span>Masterpieces</span></h1>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-delay="200">A curated collection of our boldest looks and
+                creative transformations.</p>
+
+            <div class="filter-buttons" data-aos="fade-up" data-aos-delay="400">
+                <button class="filter-btn active" onclick="filterGallery('all')">All Work</button>
+                <button class="filter-btn" onclick="filterGallery('hair')">Hair Styling</button>
+                <button class="filter-btn" onclick="filterGallery('makeup')">Makeup Art</button>
+                <button class="filter-btn" onclick="filterGallery('men')">Gentlemen</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🔸 Masonry Gallery -->
+    <section class="gallery-section">
+        <div class="masonry-container" id="galleryGrid">
+            <!-- Hair Items -->
+            <div class="masonry-item hair" data-aos="fade-up">
+                <img src="images/img1.png" alt="Hair Style 1">
+                <div class="overlay"><span>Hair Styling</span></div>
+            </div>
+            <div class="masonry-item hair" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/img2.png" alt="Hair Style 2">
+                <div class="overlay"><span>Hair Styling</span></div>
+            </div>
+            <div class="masonry-item hair" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/img3.jpg" alt="Hair Style 3">
+                <div class="overlay"><span>Hair Styling</span></div>
+            </div>
+            <div class="masonry-item hair" data-aos="fade-up">
+                <img src="images/img6.jpg" alt="Hair Style 4">
+                <div class="overlay"><span>Hair Styling</span></div>
+            </div>
+
+            <!-- Makeup Items -->
+            <div class="masonry-item makeup" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/makeup/bridal.jpg" alt="Bridal Makeup">
+                <div class="overlay"><span>Makeup Art</span></div>
+            </div>
+            <div class="masonry-item makeup" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/makeup/glam.png" alt="Glam Makeup">
+                <div class="overlay"><span>Makeup Art</span></div>
+            </div>
+            <div class="masonry-item makeup" data-aos="fade-up">
+                <img src="images/makeup/red_carpet.jpg" alt="Red Carpet Makeup">
+                <div class="overlay"><span>Makeup Art</span></div>
+            </div>
+            <div class="masonry-item makeup" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/img5.jpg" alt="Eye Makeup">
+                <div class="overlay"><span>Makeup Art</span></div>
+            </div>
+
+            <!-- Men Items -->
+            <div class="masonry-item men" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/m1.jpg" alt="Men's Style 1">
+                <div class="overlay"><span>Gentlemen</span></div>
+            </div>
+            <div class="masonry-item men" data-aos="fade-up">
+                <img src="images/m4.jpg" alt="Men's Style 2">
+                <div class="overlay"><span>Gentlemen</span></div>
+            </div>
+            <div class="masonry-item men" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/m7.jpg" alt="Men's Style 3">
+                <div class="overlay"><span>Gentlemen</span></div>
+            </div>
+
+            <!-- More Content -->
+            <div class="masonry-item hair" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/img4.jpg" alt="Style 5">
+                <div class="overlay"><span>Creative Design</span></div>
+            </div>
+            <div class="masonry-item hair" data-aos="fade-up">
+                <img src="images/img9.jpg" alt="Style 6">
+                <div class="overlay"><span>Bold Look</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔸 Lightbox -->
+    <div id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img src="" alt="Popup Image" id="lightboxImg">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img src="images/logo.png" alt="POP-ART Logo" class="footer-logo" />
+        <p>560 Mission St, San Francisco<br>CA 94 USA</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="test.html">Services</a>
+            <a href="test.html">Menu</a>
+            <a href="#">Testimonial</a>
+            <a href="#">Contact</a>
+        </div>
+        <small>Copyright ©POP-ART 2020. All rights reserved</small>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 1000,
+            offset: 200
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.masonry-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (category === 'all' && btn.innerText === 'ALL WORK') btn.classList.add('active');
+                if (category === 'hair' && btn.innerText === 'HAIR STYLING') btn.classList.add('active');
+                if (category === 'makeup' && btn.innerText === 'MAKEUP ART') btn.classList.add('active');
+                if (category === 'men' && btn.innerText === 'GENTLEMEN') btn.classList.add('active');
+            });
+
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'inline-block';
+                    // Re-trigger AOS
+                    item.setAttribute('data-aos', 'fade-up');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox Logic
+        const galleryItems = document.querySelectorAll('.masonry-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.querySelector('.close-lightbox');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // prevent scroll
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+    </script>
+</body>
+
+</html>
